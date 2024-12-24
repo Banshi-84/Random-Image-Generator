@@ -1,4 +1,5 @@
 const axios = require('axios');
+const API_KEY = '47732950-a79c440ee5094b3a6a46366d1';
 
 module.exports = async (req, res) => {
   try {
