@@ -1,35 +1,28 @@
 <!DOCTYPE html>
-<html lang="En">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Random Image Generation App</title>
+  <title>Random Image Generator</title>
   <style>
-    /* Centering */
     body {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      min-height: 100vh; /* Overall screen height */
+      min-height: 100vh;
       margin: 0;
       font-family: Arial, sans-serif;
       text-align: center;
     }
-
-    /* Container for images */
     #imageContainer {
       margin-top: 20px;
     }
-
-    /* Button Style */
     button {
       padding: 10px 20px;
       font-size: 16px;
       cursor: pointer;
     }
-
-    /* Style of Images */
     img {
       max-width: 100%;
       height: auto;
@@ -40,18 +33,18 @@
 </head>
 <body>
   <h1>Random Image Generator</h1>
-  <button id="fetchImage">Get Image</button>
+  <button id="fetchImage">Fetch Image</button>
   <div id="imageContainer"></div>
 
   <script>
     document.getElementById('fetchImage').addEventListener('click', async () => {
-      const response = await fetch('/random-image');
+      const response = await fetch('/api/random-image');
       const data = await response.json();
       const imageContainer = document.getElementById('imageContainer');
       if (data.imageUrl) {
-        imageContainer.innerHTML = `<img src="${data.imageUrl}" alt="Random Images">`;
+        imageContainer.innerHTML = `<img src="${data.imageUrl}" alt="Random Image">`;
       } else {
-        imageContainer.innerHTML = '<p>Failed to find it.</p>';
+        imageContainer.innerHTML = '<p>Image not found.</p>';
       }
     });
   </script>
